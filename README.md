@@ -31,7 +31,7 @@ First save the following patch into a file, say `patch`.
 Next, run the following commands:
 
     $ cd /ext/spec
-    $ git apply patch
+    $ git apply ../../patch
 
 You should be good to go and can generate and run the tests as described below.
 
