@@ -14,6 +14,7 @@ TemplateCache = {}
 # do a chained lookups.
 Find = (name, stack, value = null) ->
   return stack[stack.length - 1] if name == '.'
+  return Find(name[1..], [stack[stack.length - 1]]) if name[0] == '.'
   [name, parts...] = name.split(/\./)
   for i in [stack.length - 1...-1]
     continue unless stack[i]?

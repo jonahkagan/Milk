@@ -1,3 +1,40 @@
+# Fork Info
+
+This fork adds the leading dot extension described here:
+<https://github.com/mustache/spec/issues/52>. In order to test the extension,
+apply @bobthecrow's patch from that issue thread to the Mustache spec before
+generating the tests.
+
+First save the following patch into a file, say `patch`.
+
+    diff --git a/specs/interpolation.yml b/specs/interpolation.yml
+    index 2237b55..acae566 100644
+    --- a/specs/interpolation.yml
+    +++ b/specs/interpolation.yml
+    @@ -171,6 +171,15 @@ tests:
+         template: '"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"'
+         expected: '"Phil" == "Phil"'
+
+    +  - name: Dotted Names - Leading Dot
+    +    desc: A leading dot should force resolution inside the current scope.
+    +    data:
+    +      a: { }
+    +      b: { name: 'Name' }
+    +      name: 'Fail'
+    +    template: '{{#a}}{{.name}}{{/a}}{{#b}}{{.name}}{{/b}}'
+    +    expected: 'Name'
+    +
+       # Whitespace Sensitivity
+
+       - name: Interpolation - Surrounding Whitespace
+
+Next, run the following commands:
+
+    $ cd /ext/spec
+    $ git apply patch
+
+You should be good to go and can generate and run the tests as described below.
+
 Milk
 ====
 
