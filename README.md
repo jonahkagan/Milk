@@ -2,7 +2,7 @@
 
 This fork adds the leading dot extension described here:
 <https://github.com/mustache/spec/issues/52>. In order to test the extension,
-apply @bobthecrow's patch from that issue thread to the Mustache spec before
+apply @bobthecow's patch from that issue thread to the Mustache spec before
 generating the tests.
 
 First save the following patch into a file, say `patch`.
